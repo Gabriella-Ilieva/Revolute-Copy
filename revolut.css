@@ -1,0 +1,262 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: url('../vendors/fonts/Inter/Inter-VariableFont_slnt_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Sofia Sans';
+    font-style: normal;
+    src: url('../vendors/fonts/SofiaSans/SofiaSans-VariableFont_wght.ttf') format('truetype');
+}
+
+:root{
+    --vh: calc(150vh);
+}
+
+.innerSectionWrapper{
+    max-width: 1000px;
+    width: 100%;
+}
+
+.heroSection.container-fluid{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    top: -60px;
+    padding: 0;
+}
+
+.innerContent{
+    height: 100vh;
+    width: 100%;
+}
+
+.backgroundImg{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, 0px);
+    transform-origin: 50% 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    scale: 1.75;
+}
+
+.womanImg{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    transform-origin: 50% 100%;
+    pointer-events: none;
+    display: block;
+    width: calc(126vh);
+    height: calc(70vh);
+    max-width: unset;
+}
+
+.backOverlay{
+    width: calc(49.6063vh);
+    height: calc(70vh);
+    bottom: 0;
+    left: 50%;
+    border: 3px solid #c9c9cd;
+    border-top-left-radius: calc(2.5vh);
+    border-top-right-radius: calc(2.5vh);
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.mainCarouselItem{
+    width: calc(49.6063vh);
+    height: calc(70vh);
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0) 10.09%, rgba(0, 0, 0, 0.15) 53.36%);
+    position: absolute;
+    z-index: 999;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 999;
+}
+
+.mainItem{
+    left: 50%;
+}
+
+.carouselItem,
+.carouselItem .swiper-slide-shadow-coverflow,
+.carouselItem img{
+    border-radius: 2.5vh;
+}
+
+.carouselItem.mainCarouselItem,
+.carouselItem.mainCarouselItem > img,
+.carouselItem.mainCarouselItem .swiper-slide-shadow-coverflow{
+    border-radius: unset;
+}
+
+.carouselItem.mainCarouselItem .backgroundImgCarousel{
+    width: 100vw;
+    height: 100vh;
+    border-radius: unset;
+    max-width: none;
+    transform: translate(-50%, 0px)
+}
+
+.mainCarouselItem .womanImgCarousel{
+    max-width: none;
+}
+
+.mainCarouselItem > img:nth-child(3){
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textWrapper{
+    top: 13%;
+    width: 100vw;
+    z-index: 1;
+}
+
+.title{
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1;
+    letter-spacing: -0.06rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.mainBtn{
+    text-decoration: none;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    letter-spacing: normal;
+    height: auto;
+    width: max-content;
+    max-width: 240px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 9999px;
+    color: #fff;
+    background-color: #191c1f;
+    text-align: center;
+}
+
+.mySwiper.swiper {
+    height: 100%;
+    overflow: visible;
+    transform: translateX(calc((100vw - 150vh) * 0.5));
+}
+
+.carouselSectionWrapper,
+.mainCarouselWrapper{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    transform-origin: 50% 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    max-width: unset;
+    width: 100vw;
+    height: 100vh;
+}
+
+.carouselSectionWrapper{
+    padding-top: 6rem;
+}
+
+.carouselSectionWrapper > .innerSectionWrapper{
+    opacity: 0;
+}
+
+.carouselSectionWrapper > .carouselWrapper{
+    width: calc(150vh);
+    margin-top: 4vh;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    left: 0;
+    scale: 1;
+    height: 70vh;
+    overflow-x: clip;
+}
+
+.carouselItem.swiper-slide:not(.swiper-slide-visible){
+    visibility: hidden;
+}
+
+.subtitle{
+    font-family: "Sofia Sans", sans-serif;
+    font-size: clamp(3rem, 2.85rem + 1vw, 3.75rem);
+    text-align: center;
+    margin-bottom: .5rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    text-wrap: unset;
+}
+
+.subtitleSmall{
+    font-size: 3rem;
+}
+
+.white{
+    color: #fff;
+}
+
+.mainParagraph{
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: normal;
+    width: 65%;
+}
+
+.mainParagraph > span{
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.01125rem;
+}
+
+.carouselItem > img.regular{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mySwiper.swiper-horizontal > .swiper-pagination-bullets{
+    bottom: -30px;
+}
+
+.blackSection{
+    background: #000;
+}
+
+.whiteBtn{
+    color: #000;
+    background-color: #f4f4f4;
+}
+
+.videoContainer{
+    aspect-ratio: 1.666666667;
+    max-height: 446px;
+}
+
+.pc{
+    display: none;
+}
