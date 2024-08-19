@@ -65,3 +65,32 @@ jQuery(document).ready(function(){
             transform: "translate(-50%, 0%)", 
             duration: 0.7}, "<");
 })
+            
+let imagedSection = document.querySelector(".imagedSection");
+let backgrounds = gsap.utils.toArray(".backgroundImage");
+
+backgrounds.forEach((bg, i) => {
+
+    gsap.set(bg, { y: -130});
+
+    const tl2 = gsap.timeline({
+        scrollTrigger: {
+            trigger: imagedSection,
+            start: () => "top +=" + window.innerHeight,
+            end: () => "bottom ",
+            scrub: true,
+            pinSpacer: false,
+            toggleActions: "restart none reverse none",
+            invalidateOnRefresh: true,   
+        }
+    });
+
+    tl2
+        .to(bg, {
+            y: 0, 
+            duration: 1})
+        .to(bg, {
+            y: 130, 
+            duration: 1});
+
+});
