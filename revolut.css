@@ -17,6 +17,11 @@
 .innerSectionWrapper{
     max-width: 1000px;
     width: 100%;
+    display: grid;
+    grid-template:
+        "content"
+        "media" 1fr / auto;
+    align-content: center;
 }
 
 .heroSection.container-fluid{
@@ -57,6 +62,9 @@
     width: calc(126vh);
     height: calc(70vh);
     max-width: unset;
+    /* min-height: 370px;
+    min-width: 665px;
+    scale: 1.75; */
 }
 
 .backOverlay{
@@ -80,6 +88,7 @@
     z-index: 999;
     transform: translateX(-50%);
     bottom: 0;
+    /* left: 50%; */
     z-index: 999;
 }
 
@@ -116,6 +125,10 @@
     height: 100%;
     object-fit: cover;
 }
+
+/* .womanImgCarousel.womanMain{
+    transform: translate(-51%, 13%);
+} */
 
 .textWrapper{
     top: 13%;
@@ -154,6 +167,7 @@
 }
 
 .mySwiper.swiper {
+    /* width: calc(49.6063vh); */
     height: 100%;
     overflow: visible;
     transform: translateX(calc((100vw - 150vh) * 0.5));
@@ -161,6 +175,7 @@
 
 .carouselSectionWrapper,
 .mainCarouselWrapper{
+    /* display: none; */
     position: absolute;
     bottom: 0px;
     left: 50%;
@@ -183,6 +198,7 @@
 
 .carouselSectionWrapper > .carouselWrapper{
     width: calc(150vh);
+    /* aspect-ratio: 1/0.44; */
     margin-top: 4vh;
     position: absolute;
     bottom: 0;
@@ -190,12 +206,19 @@
     left: 0;
     scale: 1;
     height: 70vh;
+    /* max-width: 800px; */
     overflow-x: clip;
 }
 
 .carouselItem.swiper-slide:not(.swiper-slide-visible){
     visibility: hidden;
 }
+
+/* .carouselItem.swiper-slide-active,
+.carouselItem.swiper-slide-next,
+.carouselItem.swiper-slide-prev{
+    visibility: visible;
+} */
 
 .subtitle{
     font-family: "Sofia Sans", sans-serif;
@@ -238,6 +261,10 @@
     width: 100%;
     object-fit: cover;
 }
+/* 
+.mainCarouselItem.swiper-slide > .womanImgCarousel{
+    transform: translate(-50%, 80px)  scale(0.6);
+} */
 
 .mySwiper.swiper-horizontal > .swiper-pagination-bullets{
     bottom: -30px;
@@ -245,6 +272,8 @@
 
 .blackSection{
     background: #000;
+    display: flex;
+    justify-content: center;
 }
 
 .whiteBtn{
