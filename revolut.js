@@ -247,3 +247,26 @@ const carouselMap = {
     '.thirdCarousel': swiperInstances[2],
     '.fourthCarousel': swiperInstances[3]
 };
+
+function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+        let swiperInstance = carouselMap[`.${entry.target.classList[0]}`];
+
+        if (entry.target.classList.contains('mySwiper')) {
+            if (entry.isIntersecting) {
+                swiperInstance.autoplay.start();
+            } else {
+                swiperInstance.slideToLoop(2, 400);
+                swiperInstance.autoplay.stop();
+            }
+        } else {
+            if (entry.isIntersecting) {
+                console.log('Common carousel start');
+                swiperInstance.autoplay.start();
+            } else {
+                swiperInstance.autoplay.stop();
+                console.log('Common carousel stop');
+            }
+        }
+    });
+}
