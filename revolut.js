@@ -240,3 +240,10 @@ const swiperInstances = [
         }
     }),
 ]
+
+const carouselMap = {
+    '.mySwiper': swiperInstances[0],
+    '.secondCarousel': swiperInstances[1],
+    '.thirdCarousel': swiperInstances[2],
+    '.fourthCarousel': swiperInstances[3]
+};
