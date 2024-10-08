@@ -1,4 +1,8 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
+            
+    let buttons = ["Приключение ⛰️", "Сватба", "Премествания", "Билет за 🌔"];
+    let buttonsThirdCarousel = ["Изпратете", "Поделете", "Подарете"];
+    let buttonsFourthCarousel = ["Изпратете", "Поделете", "Подарете"];
     gsap.registerPlugin(ScrollTrigger);
 
     let section = document.querySelector(".heroSection");
@@ -64,209 +68,227 @@ jQuery(document).ready(function(){
             scale: "1.51",
             transform: "translate(-50%, 0%)", 
             duration: 0.7}, "<");
-})
+
             
-let imagedSection = document.querySelector(".imagedSection");
-let backgrounds = gsap.utils.toArray(".backgroundImage");
+    let imagedSection = document.querySelector(".imagedSection");
+    let backgrounds = gsap.utils.toArray(".backgroundImage");
 
-backgrounds.forEach((bg, i) => {
+    backgrounds.forEach((bg, i) => {
+    
+        gsap.set(bg, { y: -130});
 
-    gsap.set(bg, { y: -130});
+        const tl2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: imagedSection,
+                start: () => "top +=" + window.innerHeight,
+                end: () => "bottom ",
+                scrub: true,
+                pinSpacer: false,
+                toggleActions: "restart none reverse none",
+                invalidateOnRefresh: true,   
+            }
+        });
 
-    const tl2 = gsap.timeline({
-        scrollTrigger: {
-            trigger: imagedSection,
-            start: () => "top +=" + window.innerHeight,
-            end: () => "bottom ",
-            scrub: true,
-            pinSpacer: false,
-            toggleActions: "restart none reverse none",
-            invalidateOnRefresh: true,   
-        }
+        tl2
+            .to(bg, {
+                y: 0, 
+                duration: 1})
+            .to(bg, {
+                y: 130, 
+                duration: 1});
+
     });
 
-    tl2
-        .to(bg, {
-            y: 0, 
-            duration: 1})
-        .to(bg, {
-            y: 130, 
-            duration: 1});
-
-});
-
-const swiperInstances = [
-    new Swiper(".mySwiper", {  
-        loop: true,
-        slidesPerView: 3,
-        initialSlide: 2,
-        spaceBetween: 35,
-        effect: 'coverflow',
-        coverflowEffect: {
-            rotate: 0,
-            scale: 0.9,
-            depth: 40,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        autoplay: {
-            delay: 100000,
-            disableOnInteraction: false,
-    },
-    }),
-
-
-    new Swiper(".secondCarousel", {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 30,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            renderBullet: function (index, className) {
-                return '<span class="carouselBtn ' + className + '"><span>' + buttons[index] + "</span></span>";
+    const swiperInstances = [
+        new Swiper(".mySwiper", {  
+            loop: true,
+            slidesPerView: 3,
+            initialSlide: 2,
+            spaceBetween: 35,
+            effect: 'coverflow',
+            coverflowEffect: {
+                rotate: 0,
+                scale: 0.9,
+                depth: 40,
+                modifier: 1,
+                slideShadows: true,
             },
-        },
-        autoplay: {
-            delay: 8000,
-            disableOnInteraction: true,
-        },
-        on: {
-            autoplayTimeLeft(s, time, progress) {
-                let overlay = document.querySelector(".swiper-pagination-bullet-active > span");
-                overlay.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
             },
+            autoplay: {
+                delay: 100000,
+                disableOnInteraction: false,
+        },
+        }),
 
-            slideChange(swiper){
-                let overlayAll = document.querySelectorAll(".swiper-pagination-bullet > span");
-                
-                overlayAll.forEach(ol => {
-                    ol.style.setProperty("--widthOverlay", '0%');
-                });
+
+        new Swiper(".secondCarousel", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="carouselBtn ' + className + '"><span>' + buttons[index] + "</span></span>";
+                },
+            },
+            autoplay: {
+                delay: 8000,
+                disableOnInteraction: true,
+            },
+            on: {
+                autoplayTimeLeft(s, time, progress) {
+                    let overlay = document.querySelector(".swiper-pagination-bullet-active > span");
+                    overlay.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+                },
+
+                slideChange(swiper){
+                    let overlayAll = document.querySelectorAll(".swiper-pagination-bullet > span");
+                    
+                    overlayAll.forEach(ol => {
+                        ol.style.setProperty("--widthOverlay", '0%');
+                    });
+                }
             }
-        }
-    }),
+        }),
 
 
-    new Swiper(".thirdCarousel", {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 30,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            renderBullet: function (index, className) {
-                return '<span class="carouselBtn ' + className + '"><span>' + buttonsThirdCarousel[index] + "</span></span>";
+        new Swiper(".thirdCarousel", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
             },
-        },
-        autoplay: {
-            delay: 8000,
-            stop: true,
-            disableOnInteraction: true,
-        },
-        on: {
-            // init(swiper) {
-            //     swiper.stop()
-            // },
-            autoplayTimeLeft(s, time, progress) {
-                let overlay2 = document.querySelector(".thirdCarousel .carouselBtn.swiper-pagination-bullet-active > span");
-                overlay2.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="carouselBtn ' + className + '"><span>' + buttonsThirdCarousel[index] + "</span></span>";
+                },
             },
+            autoplay: {
+                delay: 8000,
+                stop: true,
+                disableOnInteraction: true,
+            },
+            on: {
+                // init(swiper) {
+                //     swiper.stop()
+                // },
+                autoplayTimeLeft(s, time, progress) {
+                    let overlay2 = document.querySelector(".thirdCarousel .carouselBtn.swiper-pagination-bullet-active > span");
+                    overlay2.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+                },
 
-            slideChange(swiper){
-                let overlayAll = document.querySelectorAll(".thirdCarousel .carouselBtn.swiper-pagination-bullet > span");
-                
-                overlayAll.forEach(ol => {
-                    ol.style.setProperty("--widthOverlay", '0%');
-                });
+                slideChange(swiper){
+                    let overlayAll = document.querySelectorAll(".thirdCarousel .carouselBtn.swiper-pagination-bullet > span");
+                    
+                    overlayAll.forEach(ol => {
+                        ol.style.setProperty("--widthOverlay", '0%');
+                    });
 
-                let currentSlide = swiper.slides[swiper.activeIndex].querySelector('video');
-                currentSlide.play();
+                    let currentSlide = swiper.slides[swiper.activeIndex].querySelector('video');
+                    currentSlide.play();
+                }
             }
-        }
-    }),
+        }),
 
 
 
-    new Swiper(".fourthCarousel", {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 30,
-        effect: 'fade',
-        observer: true,
-        fadeEffect: {
-            crossFade: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            renderBullet: function (index, className) {
-                return '<span class="carouselBtn ' + className + '"><span>' + buttonsFourthCarousel[index] + "</span></span>";
+        new Swiper(".fourthCarousel", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            effect: 'fade',
+            observer: true,
+            fadeEffect: {
+                crossFade: true,
             },
-        },
-        autoplay: {
-            delay: 8000,
-            disableOnInteraction: true,
-        },
-        on: {
-            autoplayTimeLeft(s, time, progress) {
-                let overlay2 = document.querySelector(".fourthCarousel .carouselBtn.swiper-pagination-bullet-active > span");
-                overlay2.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="carouselBtn ' + className + '"><span>' + buttonsFourthCarousel[index] + "</span></span>";
+                },
             },
+            autoplay: {
+                delay: 8000,
+                disableOnInteraction: true,
+            },
+            on: {
+                autoplayTimeLeft(s, time, progress) {
+                    let overlay2 = document.querySelector(".fourthCarousel .carouselBtn.swiper-pagination-bullet-active > span");
+                    overlay2.style.setProperty("--widthOverlay", (1 - progress) * 100 + '%');
+                },
 
-            slideChange(swiper){
-                let overlayAll = document.querySelectorAll(".fourthCarousel .carouselBtn.swiper-pagination-bullet > span");
-                
-                overlayAll.forEach(ol => {
-                    ol.style.setProperty("--widthOverlay", '0%');
-                });
-                
-                let currentSlide = swiper.slides[swiper.activeIndex].querySelector('video');
-                // currentSlide.currentTime = 0;
-                currentSlide.play();
+                slideChange(swiper){
+                    let overlayAll = document.querySelectorAll(".fourthCarousel .carouselBtn.swiper-pagination-bullet > span");
+                    
+                    overlayAll.forEach(ol => {
+                        ol.style.setProperty("--widthOverlay", '0%');
+                    });
+                    
+                    let currentSlide = swiper.slides[swiper.activeIndex].querySelector('video');
+                    // currentSlide.currentTime = 0;
+                    currentSlide.play();
+                }
             }
-        }
-    }),
-]
+        }),
+    ]
 
-const carouselMap = {
-    '.mySwiper': swiperInstances[0],
-    '.secondCarousel': swiperInstances[1],
-    '.thirdCarousel': swiperInstances[2],
-    '.fourthCarousel': swiperInstances[3]
-};
+    const carouselMap = {
+        '.mySwiper': swiperInstances[0],
+        '.secondCarousel': swiperInstances[1],
+        '.thirdCarousel': swiperInstances[2],
+        '.fourthCarousel': swiperInstances[3]
+    };
 
-function handleIntersection(entries, observer) {
-    entries.forEach(entry => {
-        let swiperInstance = carouselMap[`.${entry.target.classList[0]}`];
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            let swiperInstance = carouselMap[`.${entry.target.classList[0]}`];
 
-        if (entry.target.classList.contains('mySwiper')) {
-            if (entry.isIntersecting) {
-                swiperInstance.autoplay.start();
+            if (entry.target.classList.contains('mySwiper')) {
+                if (entry.isIntersecting) {
+                    swiperInstance.autoplay.start();
+                } else {
+                    swiperInstance.slideToLoop(2, 400);
+                    swiperInstance.autoplay.stop();
+                }
             } else {
-                swiperInstance.slideToLoop(2, 400);
-                swiperInstance.autoplay.stop();
+                if (entry.isIntersecting) {
+                    console.log('Common carousel start');
+                    swiperInstance.autoplay.start();
+                } else {
+                    swiperInstance.autoplay.stop();
+                    console.log('Common carousel stop');
+                }
             }
-        } else {
-            if (entry.isIntersecting) {
-                console.log('Common carousel start');
-                swiperInstance.autoplay.start();
-            } else {
-                swiperInstance.autoplay.stop();
-                console.log('Common carousel stop');
-            }
-        }
+        });
+    }
+
+    const observerHero = new IntersectionObserver(handleIntersection, {
+        root: null,
+        threshold: 1,
     });
-}
+
+    const observerOther = new IntersectionObserver(handleIntersection, {
+        root: null,
+        threshold: 0.1,
+    });
+    
+    observerHero.observe(document.querySelector('.mySwiper'));
+    observerOther.observe(document.querySelector('.secondCarousel'));
+    observerOther.observe(document.querySelector('.thirdCarousel'));
+    observerOther.observe(document.querySelector('.fourthCarousel'));
+
+    
+})
