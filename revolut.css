@@ -505,3 +505,89 @@
         aspect-ratio: 0.75 / 1;
     }
 }
+
+
+@media screen and (min-width: 720px) {
+    .paddingSection{
+        padding: 3rem 0;
+    }
+
+    .title {
+        letter-spacing: -0.13rem;
+        font-size: clamp(5rem, 4.5rem + 2vw, 7.5rem);
+    }
+
+    .mainBtn {
+        max-width: 440px;
+    }
+
+    .pc{
+        display: block;
+    }
+
+    .mobile{
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .paddingSection{
+        padding: 4rem 0;
+    }
+
+    .womanImg {
+        transform: translate(-50%, 0px) scale(1.75);
+        width: calc(126vh);
+        height: calc(70vh);
+    }
+
+    .mainParagraph.short {
+        width: 40%;
+    }
+
+    .mainBtn {
+        max-width: 720px;
+    }
+
+    .blackSection,
+    .imagedSection{
+        min-height: max(640px, 100vh);
+    }
+
+    .colorfulSection{
+        min-height: max(640px, 90vh);
+    }
+}
+/* 
+@media screen and (min-width: 1400px) {
+    .carouselSectionWrapper > .carouselWrapper{
+        max-width: 980px;
+    }
+} */
+
+@media screen and (min-width: 1920px) {
+    .subtitle {
+        font-size: 5rem;
+    }
+
+    .innerSectionWrapper{
+        max-width: 1432px;
+    }
+
+    .mainParagraph{
+        width: 80%;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .mainParagraph > span{
+        font-size: 1rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.015rem;
+    }
+
+    .innerSectionWrapper a{
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
